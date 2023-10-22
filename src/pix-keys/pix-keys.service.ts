@@ -76,7 +76,7 @@ export class PixKeysService implements OnModuleInit {
     });
 
     if (hasLocalPixKey) {
-      throw new PixKeyAlreadyExistsError();
+      throw new PixKeyAlreadyExistsError('Pix key already exists');
     }
 
     return this.pixKeyRepository.save({
