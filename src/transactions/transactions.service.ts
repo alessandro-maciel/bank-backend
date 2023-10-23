@@ -55,10 +55,10 @@ export class TransactionsService {
 
     const sendData = {
       id: transaction.id,
-      accountId: bankAccountId,
+      account_id: bankAccountId,
       amount: createTransactionDto.amount,
-      pixkeyto: createTransactionDto.pix_key_key,
-      pixKeyKindTo: createTransactionDto.pix_key_kind,
+      pix_key_to: createTransactionDto.pix_key_key,
+      pix_key_kind_to: createTransactionDto.pix_key_kind,
       description: createTransactionDto.description,
     };
 

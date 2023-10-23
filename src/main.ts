@@ -4,6 +4,7 @@ import { PixKeyAlreadyExistsErrorFilter } from './pix-keys/filters/pix-key-alrea
 import { PixKeyGrpcUnknownErrorFilter } from './pix-keys/filters/pix-key-grpc-unknown-error.filter';
 import { ValidationPipe } from '@nestjs/common';
 import { Transport } from '@nestjs/microservices';
+import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -19,19 +20,21 @@ async function bootstrap() {
     }),
   );
 
+  const configService = app.get(ConfigService);
+
   app.connectMicroservice({
     transport: Transport.KAFKA,
     options: {
       client: {
-        brokers: ['host.docker.internal:9094'],
+        brokers: [configService.get('KAFKA_BROKER')],
       },
       consumer: {
-        groupId: 'transactions-consumer',
+        groupId: configService.get('KAFKA_CONSUMER_GROUP_ID'),
       },
     },
   });
 
   await app.startAllMicroservices();
-  await app.listen(3000);
+  await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
