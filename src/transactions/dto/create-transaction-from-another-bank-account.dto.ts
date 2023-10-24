@@ -15,11 +15,11 @@ export class CreateTransactionFromAnotherBankAccountDto {
 
   @IsString()
   @IsNotEmpty()
-  pixKeyTo: string;
+  pix_key_to: string;
 
   @IsString()
   @IsNotEmpty()
-  pixKeyKindTo: PixKeyKind;
+  pix_key_kind_to: PixKeyKind;
 
   @IsOptional()
   description: string | null;
@@ -31,7 +31,7 @@ export class CreateTransactionFromAnotherBankAccountDto {
 
   @IsUUID()
   @IsNotEmpty()
-  accountId: string;
+  account_id: string;
 
   @IsString()
   @IsNotEmpty()

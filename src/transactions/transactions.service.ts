@@ -80,8 +80,8 @@ export class TransactionsService {
     const transaction = await this.dataSource.transaction(async (manager) => {
       const pixKey = await manager.findOneOrFail(PixKey, {
         where: {
-          key: input.pixKeyTo,
-          kind: input.pixKeyKindTo,
+          key: input.pix_key_to,
+          kind: input.pix_key_kind_to,
         },
       });
 
@@ -95,9 +95,9 @@ export class TransactionsService {
         amount: input.amount,
         description: input.description,
         bank_account_id: bankAccount.id,
-        bank_account_from_id: input.accountId,
-        pix_key_key: input.pixKeyTo,
-        pix_key_kind: input.pixKeyKindTo,
+        bank_account_from_id: input.account_id,
+        pix_key_key: input.pix_key_to,
+        pix_key_kind: input.pix_key_kind_to,
         operation: TransactionOperation.credit,
         status: TransactionStatus.completed,
       });
