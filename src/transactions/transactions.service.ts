@@ -136,10 +136,10 @@ export class TransactionsService {
 
     const sendData = {
       id: input.id,
-      accountId: transaction.bank_account_id,
+      account_id: transaction.bank_account_id,
       amount: Math.abs(transaction.amount),
-      pixkeyto: transaction.pix_key_key,
-      pixKeyKindTo: transaction.pix_key_kind,
+      pix_key_to: transaction.pix_key_key,
+      pix_key_kind_to: transaction.pix_key_kind,
       description: transaction.description,
       status: TransactionStatus.completed,
     };
